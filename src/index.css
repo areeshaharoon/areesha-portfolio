@@ -1,0 +1,65 @@
+/* ============================================================
+   GLOBAL STYLES & DESIGN TOKENS
+   Areesha Haroon — Vibe Coder Portfolio
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-display: 'Outfit', sans-serif;
+
+  /* Color Palette */
+  --bg-white: #ffffff;
+  --bg-cream: #faf7f6;
+  --rose-subtle: #f6eeec;
+  --rose-soft: #ebdcd7;
+  --maroon-accent: #8b4e4a;
+  --maroon-deep: #5e2e2b;
+  --text-primary: #1e1919;
+  --text-secondary: #745f5d;
+  --text-muted: #a38f8d;
+  --border-subtle: rgba(139, 78, 74, 0.12);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: clip;
+  background-color: var(--bg-white);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: clip;
+}
+
+/* Ensure images don't cause layout overflow */
+img {
+  max-width: 100%;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Smooth focus styles */
+:focus-visible {
+  outline: 2px solid var(--maroon-accent);
+  outline-offset: 3px;
+}

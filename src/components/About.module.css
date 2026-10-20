@@ -1,0 +1,480 @@
+/* ============================================================
+   ABOUT ME SECTION — EDITORIAL & LUXURY MINIMALIST
+   ============================================================ */
+
+.aboutSection {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  padding: 2rem clamp(1.5rem, 5vw, 5rem) 6rem;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Feather transition from Hero bottom into pure white */
+.heroTransitionGradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(180deg, rgba(235, 215, 210, 0.35) 0%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Main Two-Column Container */
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: center;
+  gap: clamp(3rem, 6vw, 6.5rem);
+}
+
+/* ============================================================
+   LEFT COLUMN: PHOTO FRAME (~40%)
+   ============================================================ */
+
+.leftCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.visible .leftCol {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.photoWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 410px;
+}
+
+/* Soft dusty-rose ambient glow blob behind photo */
+.photoGlow {
+  position: absolute;
+  inset: -15% -12%;
+  background: radial-gradient(
+    circle at 50% 45%,
+    rgba(139, 78, 74, 0.22) 0%,
+    rgba(235, 220, 215, 0.5) 45%,
+    rgba(255, 255, 255, 0) 72%
+  );
+  filter: blur(45px);
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Editorial Arch Frame */
+.photoFrame {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 190px 190px 32px 32px;
+  overflow: hidden;
+  border: 1px solid rgba(139, 78, 74, 0.28);
+  background: #fbf7f6;
+  box-shadow:
+    0 24px 50px -12px rgba(139, 78, 74, 0.16),
+    0 10px 24px -6px rgba(30, 25, 25, 0.05);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.5s ease;
+}
+
+.photoWrapper:hover .photoFrame {
+  transform: translateY(-8px) scale(1.018) rotate(-0.4deg);
+  box-shadow:
+    0 32px 65px -14px rgba(139, 78, 74, 0.24),
+    0 14px 28px -6px rgba(30, 25, 25, 0.08);
+}
+
+/* Photo Image: object-fit cover, top-anchored so face never crops */
+.photoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* ============================================================
+   RIGHT COLUMN: EDITORIAL CONTENT (~60%)
+   ============================================================ */
+
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+/* Staggered entrance reveal items */
+.revealItem {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.visible .revealItem {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay1 { transition-delay: 0.12s; }
+.delay2 { transition-delay: 0.22s; }
+.delay3 { transition-delay: 0.32s; }
+.delay4 { transition-delay: 0.42s; }
+.delay5 { transition-delay: 0.52s; }
+.delay6 { transition-delay: 0.62s; }
+.delay7 { transition-delay: 0.72s; }
+
+/* 1. Label Row */
+.labelRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.labelLine {
+  display: inline-block;
+  width: 32px;
+  height: 2px;
+  background: #8b4e4a;
+  border-radius: 2px;
+}
+
+.label {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #8b4e4a;
+  text-transform: uppercase;
+}
+
+/* 2. Heading */
+.heading {
+  margin: 0;
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #161212;
+}
+
+.headingDot {
+  color: #8b4e4a;
+}
+
+/* 3. Tagline */
+.tagline {
+  margin: 0;
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  font-weight: 500;
+  line-height: 1.45;
+  color: #5f4a47;
+  letter-spacing: -0.01em;
+}
+
+.taglineAccent {
+  color: #8b4e4a;
+  font-weight: 700;
+}
+
+/* 4. Bio Paragraph */
+.bioParagraph {
+  margin: 0;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: #4b3d3b;
+  max-width: 640px;
+}
+
+/* 5. Quick Facts Grid */
+.factsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-top: 0.4rem;
+}
+
+.factCard {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #fbf7f6;
+  border: 1px solid rgba(139, 78, 74, 0.16);
+  border-radius: 12px;
+  transition: all 0.25s ease;
+}
+
+.factCard:hover {
+  background: #ffffff;
+  border-color: rgba(139, 78, 74, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px -4px rgba(139, 78, 74, 0.12);
+}
+
+.factIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(139, 78, 74, 0.08);
+  color: #8b4e4a;
+  flex-shrink: 0;
+}
+
+.factIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.factText {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #2b2221;
+  line-height: 1.35;
+}
+
+/* 6. Stats Row */
+.statsRow {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2.2rem);
+  padding: 1.25rem 1.6rem;
+  background: #fbf7f6;
+  border: 1px solid rgba(139, 78, 74, 0.16);
+  border-radius: 16px;
+  margin-top: 0.6rem;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.statCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.statNumber {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #8b4e4a;
+  letter-spacing: -0.02em;
+}
+
+.statTech {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #8b4e4a;
+  letter-spacing: -0.01em;
+}
+
+.statBadge {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #8b4e4a;
+  letter-spacing: -0.01em;
+}
+
+.statLabel {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #745f5d;
+}
+
+.statDivider {
+  width: 1px;
+  height: 38px;
+  background: rgba(139, 78, 74, 0.2);
+  flex-shrink: 0;
+}
+
+/* 7. CTA Button */
+.ctaRow {
+  margin-top: 0.6rem;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.95rem 2rem;
+  background: #8b4e4a;
+  color: #ffffff;
+  border-radius: 9999px;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  box-shadow: 0 10px 24px -6px rgba(139, 78, 74, 0.35);
+  transition: background 0.25s ease,
+              transform 0.25s ease,
+              box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.ctaBtn:hover {
+  background: #5e2e2b;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -6px rgba(94, 46, 43, 0.45);
+}
+
+.ctaArrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+.ctaBtn:hover .ctaArrow {
+  transform: translateY(4px);
+}
+
+/* Placeholder for next section */
+.projectsPlaceholder {
+  display: block;
+  width: 100%;
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN (Tablet & Mobile)
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .container {
+    gap: 3.5rem;
+  }
+  .photoWrapper {
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 860px) {
+  .aboutSection {
+    padding: 1.8rem 1.5rem 4rem;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 2.8rem;
+  }
+
+  /* Mobile: Single column, photo on top (max-width ~70%, centered) */
+  .leftCol {
+    width: 100%;
+    transform: translateY(28px);
+  }
+
+  .visible .leftCol {
+    transform: translateY(0);
+  }
+
+  .photoWrapper {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+
+  .heading {
+    font-size: clamp(2rem, 7vw, 2.7rem);
+  }
+
+  .factsGrid {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .statsRow {
+    width: 100%;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 1rem 1.25rem;
+  }
+
+  .statNumber {
+    font-size: 1.6rem;
+  }
+
+  .statTech,
+  .statBadge {
+    font-size: 0.95rem;
+  }
+
+  .statLabel {
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .photoWrapper {
+    max-width: 82%;
+  }
+
+  .photoFrame {
+    border-radius: 140px 140px 24px 24px;
+  }
+
+  .statsRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .statDivider {
+    display: none;
+  }
+
+  .ctaBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY: PREFERS-REDUCED-MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .leftCol,
+  .revealItem {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .photoFrame,
+  .ctaBtn,
+  .factCard {
+    transition: none !important;
+  }
+}

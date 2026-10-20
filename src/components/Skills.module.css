@@ -1,0 +1,454 @@
+/* ============================================================
+   SKILLS & TOOLKIT SECTION — EDITORIAL OFF-WHITE AESTHETIC
+   Areesha Haroon | Vibe Coder Portfolio
+   ============================================================ */
+
+.skillsSection {
+  position: relative;
+  width: 100%;
+  background-color: #faf7f6;
+  color: #1a1414;
+  padding: 6rem clamp(1.5rem, 5vw, 5rem) 8rem;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Transition from Dark Projects into Warm Off-White */
+.transitionMask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 90px;
+  background: linear-gradient(180deg, #0b0a0a 0%, rgba(250, 247, 246, 0.4) 60%, #faf7f6 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   SECTION HEADER: EDITORIAL & BOLD
+   ============================================================ */
+
+.sectionHeader {
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.visible .sectionHeader {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.headerLabelRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.2rem;
+}
+
+.headerDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #8b4e4a;
+  box-shadow: 0 0 10px rgba(139, 78, 74, 0.45);
+}
+
+.headerLabel {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #8b4e4a;
+}
+
+.mainHeading {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: clamp(2.8rem, 6vw, 4.6rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1a1414;
+  line-height: 1.08;
+  margin: 0 0 1.25rem 0;
+}
+
+.supportingText {
+  font-family: var(--font-sans, sans-serif);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.68;
+  color: #745f5d;
+  font-weight: 400;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   CATEGORIES GRID: 2x2 LUXURY EDITORIAL CARDS
+   ============================================================ */
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.8rem, 3vw, 2.8rem);
+  margin-bottom: 4rem;
+}
+
+.categoryCard {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(139, 78, 74, 0.14);
+  border-radius: 24px;
+  padding: clamp(2rem, 3.2vw, 3rem);
+  box-shadow:
+    0 12px 35px -12px rgba(139, 78, 74, 0.06),
+    0 1px 3px 0 rgba(0, 0, 0, 0.02);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(32px);
+}
+
+.visible .categoryCard {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.visible .delay1 {
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+
+.visible .delay2 {
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.2s,
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+.visible .delay3 {
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.3s,
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+.visible .delay4 {
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.4s,
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+}
+
+.categoryCard:hover {
+  transform: translateY(-5px);
+  border-color: rgba(139, 78, 74, 0.32);
+  box-shadow:
+    0 24px 50px -15px rgba(139, 78, 74, 0.12),
+    0 2px 8px 0 rgba(0, 0, 0, 0.03);
+}
+
+/* Card Header: Number & Eyebrow */
+.cardHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(139, 78, 74, 0.1);
+  margin-bottom: 1.4rem;
+}
+
+.cardNumber {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #8b4e4a;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.cardEyebrow {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #9c8886;
+}
+
+.categoryTitle {
+  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
+  font-size: clamp(1.65rem, 2.2vw, 2.1rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #1a1414;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.2;
+}
+
+.categoryDesc {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.94rem;
+  line-height: 1.62;
+  color: #745f5d;
+  margin: 0 0 1.8rem 0;
+}
+
+/* Skills List */
+.skillsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skillItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #fdfbfb;
+  border: 1px solid rgba(139, 78, 74, 0.08);
+  border-radius: 12px;
+  padding: 11px 16px;
+  transition: all 0.2s ease;
+}
+
+.skillItem:hover {
+  background: #ffffff;
+  border-color: rgba(139, 78, 74, 0.25);
+  transform: translateX(4px);
+  box-shadow: 0 4px 14px rgba(139, 78, 74, 0.06);
+}
+
+.skillBullet {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(139, 78, 74, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+
+.bulletDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8b4e4a;
+}
+
+.skillItem:hover .skillBullet {
+  background: rgba(139, 78, 74, 0.18);
+}
+
+.skillContent {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.skillName {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1414;
+  letter-spacing: 0.01em;
+}
+
+.skillDetail {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #8c7674;
+}
+
+/* ============================================================
+   EDITORIAL PHILOSOPHY BANNER
+   ============================================================ */
+
+.philosophyBanner {
+  background: #ffffff;
+  border: 1px solid rgba(139, 78, 74, 0.16);
+  border-radius: 20px;
+  padding: 1.8rem 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  box-shadow: 0 8px 25px -10px rgba(139, 78, 74, 0.07);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s,
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s;
+}
+
+.visible .philosophyBanner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bannerLeft {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.bannerIcon {
+  font-size: 1.4rem;
+  color: #8b4e4a;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.bannerText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bannerHeading {
+  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1414;
+  margin: 0;
+}
+
+.bannerSubtext {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #745f5d;
+  margin: 0;
+  max-width: 650px;
+}
+
+.bannerBadge {
+  background: rgba(139, 78, 74, 0.08);
+  border: 1px solid rgba(139, 78, 74, 0.16);
+  color: #8b4e4a;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+
+/* Tablet (1024px and below) */
+@media (max-width: 1024px) {
+  .skillsSection {
+    padding: 5rem 2rem 6rem;
+  }
+
+  .categoriesGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .philosophyBanner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.6rem 1.8rem;
+  }
+}
+
+/* Mobile (768px and below) */
+@media (max-width: 768px) {
+  .skillsSection {
+    padding: 4rem 1.25rem 5rem;
+  }
+
+  .sectionHeader {
+    padding-bottom: 3rem;
+  }
+
+  .mainHeading {
+    font-size: 2.5rem;
+  }
+
+  .categoryCard {
+    padding: 1.6rem 1.25rem;
+    border-radius: 18px;
+  }
+
+  .categoryTitle {
+    font-size: 1.55rem;
+  }
+
+  .skillItem {
+    padding: 9px 12px;
+  }
+
+  .skillContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .skillDetail {
+    font-size: 0.74rem;
+  }
+
+  .philosophyBanner {
+    padding: 1.4rem 1.25rem;
+  }
+
+  .bannerLeft {
+    gap: 12px;
+  }
+
+  .bannerHeading {
+    font-size: 1.15rem;
+  }
+
+  .bannerSubtext {
+    font-size: 0.86rem;
+  }
+
+  .bannerBadge {
+    font-size: 0.76rem;
+    padding: 6px 14px;
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY: PREFERS-REDUCED-MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .sectionHeader,
+  .categoryCard,
+  .philosophyBanner {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .categoryCard:hover,
+  .skillItem:hover {
+    transform: none !important;
+  }
+}

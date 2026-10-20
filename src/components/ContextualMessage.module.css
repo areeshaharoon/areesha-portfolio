@@ -1,0 +1,76 @@
+/* ============================================================
+   CONTEXTUAL MESSAGE BUBBLE
+   Small, elegant, subtle badge floating near character
+   ============================================================ */
+
+.bubble {
+  position: absolute;
+  top: clamp(14%, 18vh, 22%);
+  left: 64%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(139, 78, 74, 0.18);
+  border-radius: 9999px;
+  box-shadow: 0 4px 20px rgba(139, 78, 74, 0.1), 0 1px 3px rgba(0, 0, 0, 0.04);
+  pointer-events: none;
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  white-space: nowrap;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8b4e4a;
+  box-shadow: 0 0 8px rgba(139, 78, 74, 0.5);
+}
+
+.text {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: clamp(0.8rem, 1vw, 0.9rem);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #3b2826;
+}
+
+/* Zone position offsets */
+.left {
+  left: 45%;
+}
+
+.right {
+  left: 72%;
+}
+
+.center {
+  left: 62%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .bubble {
+    top: 10%;
+    left: 50% !important;
+    padding: 6px 16px;
+  }
+  .text {
+    font-size: 0.8rem;
+  }
+}
