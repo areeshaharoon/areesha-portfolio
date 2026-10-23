@@ -54,7 +54,6 @@ export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [formStatus, setFormStatus] = useState('idle') // 'idle' | 'submitting' | 'success' | 'error'
   const [statusMessage, setStatusMessage] = useState('')
-  const [lastSentLinks, setLastSentLinks] = useState({ gmailUrl: '', mailtoUrl: '' })
 
   // IntersectionObserver for entrance reveal
   useEffect(() => {
@@ -80,7 +79,7 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     // Basic Validation
@@ -91,34 +90,41 @@ export default function Contact() {
     }
 
     setFormStatus('submitting')
-    setStatusMessage('Opening your email compose...')
+    setStatusMessage('Sending your message...')
 
-    const recipient = 'areeshaharoon05@gmail.com'
-    const subject = `Portfolio Project Inquiry from ${formData.name.trim()}`
-    const bodyContent = `Hi Areesha,\n\n${formData.message.trim()}\n\n---\nSender Name: ${formData.name.trim()}\nSender Email: ${formData.email.trim()}`
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '9b5ae4d4-2f31-4a3e-9f50-a028cdf4255b',
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          message: formData.message.trim(),
+          subject: `Portfolio Inquiry from ${formData.name.trim()}`,
+          from_name: formData.name.trim(),
+        }),
+      })
 
-    // Direct Gmail Web Compose URL
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyContent)}`
+      const data = await response.json()
 
-    // Standard mailto fallback
-    const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyContent)}`
-
-    setLastSentLinks({ gmailUrl, mailtoUrl })
-
-    // Open Gmail compose directly in a new tab
-    const newWindow = window.open(gmailUrl, '_blank')
-
-    // If popup blocked or on mobile device, trigger mailto fallback
-    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-      window.location.href = mailtoUrl
+      if (data.success) {
+        setFormStatus('success')
+        setStatusMessage(
+          `Thank you, ${formData.name.trim()}! Your message has been sent directly to my inbox. I'll get back to you shortly.`
+        )
+        setFormData({ name: '', email: '', message: '' })
+      } else {
+        setFormStatus('error')
+        setStatusMessage(data.message || 'Something went wrong. Please try again or email areeshaharoon05@gmail.com directly.')
+      }
+    } catch (err) {
+      setFormStatus('error')
+      setStatusMessage('Network error. Please try again or email areeshaharoon05@gmail.com directly.')
     }
-
-    setTimeout(() => {
-      setFormStatus('success')
-      setStatusMessage(
-        'Your message has been pre-filled for areeshaharoon05@gmail.com. Just click "Send" in Gmail to deliver it straight to my inbox!'
-      )
-    }, 350)
   }
 
   const handleBackToTop = (e) => {
@@ -237,27 +243,8 @@ export default function Contact() {
                       <path d="M20 6 9 17l-5-5" />
                     </svg>
                   </div>
-                  <h4 className={styles.successTitle}>Message Ready to Send!</h4>
+                  <h4 className={styles.successTitle}>Message Sent Successfully!</h4>
                   <p className={styles.successText}>{statusMessage}</p>
-
-                  <div className={styles.successActions}>
-                    <a
-                      href={lastSentLinks.gmailUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.openGmailBtn}
-                    >
-                      <span>Open in Gmail Tab</span>
-                      <span aria-hidden="true">↗</span>
-                    </a>
-                    <a
-                      href={lastSentLinks.mailtoUrl}
-                      className={styles.openMailAppBtn}
-                    >
-                      <span>Open in Mail App</span>
-                      <span aria-hidden="true">✉</span>
-                    </a>
-                  </div>
 
                   <button
                     type="button"
